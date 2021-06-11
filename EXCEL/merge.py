@@ -14,7 +14,7 @@ path1 = r"C:\Users\1\Desktop\工作\202106\save"
 
 # 当前时间格式，很有用。
 tim = time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime(time.time()))
-# hour = time.strftime("%H:%M", time.localtime())
+
 # print(path + '\\' + tim + '.xlsx')
 # print(a)
 
