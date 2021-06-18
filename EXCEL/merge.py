@@ -32,26 +32,32 @@ class yuchuli:
 
     # 数据处理
     def deal_data(self):
-        # str = 'h'
         df = self.get_data()
+        str = 'h'
         # 去除重复
         df1 = df.drop_duplicates()
         # 增加筛选 特定文档。 不想筛选就注释掉。
         if '营业状态' in df.columns:
-            # str = '营业状态'
+            str = '营业状态'
             df1 = df1[df1['营业状态'].isin(['正常营业', '未上线', '歇业'])]
             a = 1
 
-        return df1
+        return df1, str
+
     # 保存数据
     def save_data(self):
+        #  这样可以少跑一次速度更快。获取数据存起来。
         data = self.deal_data()
-        str = 'h'
-        if '营业状态' in data.columns:
-            str = '筛选过后'
+        # 数组
+        data1 = data[0]
+        # 营业状态
+        str = data[1]
+        # str = 'h'
+        # if '营业状态' in data.columns:
+        #     str = '筛选过后'
         addr = self.save + '\\' + str + self.tim + '.xlsx'
         print(addr)
-        data.to_excel(addr)
+        data1.to_excel(addr)
 
 
 if __name__ == '__main__':
